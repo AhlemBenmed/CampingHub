@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Center{% endblock %}
+
+{% block body %}
+    <h1>Create new Center</h1>
+
+    {{ include('center/_form.html.twig') }}
+
+    <a href="{{ path('app_center_index') }}">back to list</a>
+{% endblock %}

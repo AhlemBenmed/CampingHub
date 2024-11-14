@@ -32,7 +32,7 @@ class Registration
 
     #[ORM\ManyToOne(inversedBy: 'registrations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Event $event = null;
+    private ?event $event = null;
 
     public function getId(): ?int
     {
@@ -99,12 +99,12 @@ class Registration
         return $this;
     }
 
-    public function getEvent(): ?Event
+    public function getEvent(): ?event
     {
         return $this->event;
     }
 
-    public function setEvent(?Event $event): static
+    public function setEvent(?event $event): static
     {
         $this->event = $event;
 

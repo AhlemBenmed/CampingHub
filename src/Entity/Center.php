@@ -34,9 +34,9 @@ class Center
     private ?int $capacity = null;
 
     /**
-     * @var Collection<int, Event>
+     * @var Collection<int, event>
      */
-    #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'centers')]
+    #[ORM\ManyToMany(targetEntity: event::class, inversedBy: 'centers')]
     private Collection $events;
 
     /**
@@ -136,14 +136,14 @@ class Center
     }
 
     /**
-     * @return Collection<int, Event>
+     * @return Collection<int, event>
      */
     public function getEvents(): Collection
     {
         return $this->events;
     }
 
-    public function addEvent(Event $event): static
+    public function addEvent(event $event): static
     {
         if (!$this->events->contains($event)) {
             $this->events->add($event);
@@ -152,7 +152,7 @@ class Center
         return $this;
     }
 
-    public function removeEvent(Event $event): static
+    public function removeEvent(event $event): static
     {
         $this->events->removeElement($event);
 
