@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Center;
-use App\Entity\event;
+use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

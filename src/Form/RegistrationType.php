@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\event;
+use App\Entity\Event;
 use App\Entity\Registration;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,8 +25,8 @@ class RegistrationType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'id',
             ])
-            ->add('event', EntityType::class, [
-                'class' => event::class,
+            ->add('Event', EntityType::class, [
+                'class' => Event::class,
                 'choice_label' => 'id',
             ])
         ;

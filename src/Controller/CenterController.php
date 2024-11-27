@@ -14,15 +14,15 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/center')]
 final class CenterController extends AbstractController
 {
-    #[Route(name: 'app_center_index', methods: ['GET'])]
+    #[Route(name: 'App_center_index', methods: ['GET'])]
     public function index(CenterRepository $centerRepository): Response
     {
-        return $this->render('center/index.html.twig', [
+        return $this->render('center/center.html.twig', [
             'centers' => $centerRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_center_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'App_center_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $center = new Center();
@@ -33,7 +33,7 @@ final class CenterController extends AbstractController
             $entityManager->persist($center);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_center_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('App_center_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('center/new.html.twig', [
@@ -42,7 +42,7 @@ final class CenterController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_center_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'App_center_show', methods: ['GET'])]
     public function show(Center $center): Response
     {
         return $this->render('center/show.html.twig', [
@@ -50,7 +50,7 @@ final class CenterController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_center_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'App_center_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Center $center, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CenterType::class, $center);
@@ -59,7 +59,7 @@ final class CenterController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_center_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('App_center_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('center/edit.html.twig', [
@@ -68,7 +68,7 @@ final class CenterController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_center_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'App_center_delete', methods: ['POST'])]
     public function delete(Request $request, Center $center, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$center->getId(), $request->getPayload()->getString('_token'))) {
@@ -76,6 +76,6 @@ final class CenterController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_center_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('App_center_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -17,7 +17,7 @@ final class RegistrationController extends AbstractController
     #[Route(name: 'app_registration_index', methods: ['GET'])]
     public function index(RegistrationRepository $registrationRepository): Response
     {
-        return $this->render('registration/index.html.twig', [
+        return $this->render('registration/Oldindex.html.twig', [
             'registrations' => $registrationRepository->findAll(),
         ]);
     }

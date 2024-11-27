@@ -34,9 +34,9 @@ class Center
     private ?int $capacity = null;
 
     /**
-     * @var Collection<int, event>
+     * @var Collection<int, Event>
      */
-    #[ORM\ManyToMany(targetEntity: event::class, inversedBy: 'centers')]
+    #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'centers')]
     private Collection $events;
 
     /**
