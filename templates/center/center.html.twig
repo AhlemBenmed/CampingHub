@@ -9,7 +9,7 @@
     <meta name="author" content="Tooplate">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>ArtXibition - Tickets Page</title>
+    <title>Centers</title>
 
 
     <!-- Additional CSS Files -->
@@ -28,9 +28,9 @@ https://www.tooplate.com/view/2125-artxibition
 
 -->
     </head>
-    
+
     <body>
-    
+
     <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
       <div class="preloader-inner">
@@ -43,7 +43,7 @@ https://www.tooplate.com/view/2125-artxibition
       </div>
     </div>
     <!-- ***** Preloader End ***** -->
-    
+
     <!-- ***** Pre HEader ***** -->
     <div class="pre-header">
         <div class="container">
@@ -59,7 +59,7 @@ https://www.tooplate.com/view/2125-artxibition
             </div>
         </div>
     </div>
-    
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -75,8 +75,8 @@ https://www.tooplate.com/view/2125-artxibition
                             <li><a href="about.html.twig">About Us</a></li>
                             <li><a href="rent-venue.html.twig">Rent Venue</a></li>
                             <li><a href="../event/index.html.twig">Shows & Events</a></li>
-                            <li><a href="tickets.html" class="active">Tickets</a></li> 
-                        </ul>        
+                            <li><a href="tickets.html" class="active">Tickets</a></li>
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -153,23 +153,24 @@ https://www.tooplate.com/view/2125-artxibition
                 </div>
                 <div class="col-lg-12">
                     <div class="heading">
-                        <h2>Tickets Page</h2>
+                        <h2>Centers Page</h2>
                     </div>
                 </div>
+                {% for center in centers %}
                 <div class="col-lg-4">
                     <div class="ticket-item">
                         <div class="thumb">
                             <img src="{{ asset('assets/images/ticket-01.jpg') }}" alt="">
                             <div class="price">
-                                <span>1 ticket<br>from <em>$25</em></span>
+                                <span>the capacity <br>come up to<em> {{ center.capacity }}</em></span>
                             </div>
                         </div>
                         <div class="down-content">
-                            <span>There Are 150 Tickets Left For This Show</span>
-                            <h4>Wonderful Festival</h4>
+                            <span>Phone: {{ center.phone }}</span>
+                            <h4>{{ center.name }}</h4>
                             <ul>
-                                <li><i class="fa fa-clock-o"></i> Thursday: 05:00 PM to 10:00 PM</li>
-                                <li><i class="fa fa-map-marker"></i>908 Copacabana Beach, Rio de Janeiro</li>
+                                <li><i class="fa fa-clock-o"></i> {{ center.description }}</li>
+                                <li><i class="fa fa-map-marker"></i>{{ center.location }}</li>
                             </ul>
                             <div class="main-dark-button">
                                 <a href="ticket-details.html.twig">See more</a>
@@ -177,7 +178,12 @@ https://www.tooplate.com/view/2125-artxibition
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                {% else %}
+                    <div class="col-lg-12">
+                        <p>No centers found.</p>
+                    </div>
+                {% endfor %}
+                <!--<div class="col-lg-4">
                     <div class="ticket-item">
                         <div class="thumb">
                             <img src="{{ asset('assets/images/ticket-01.jpg') }}" alt="">
@@ -220,7 +226,7 @@ https://www.tooplate.com/view/2125-artxibition
                         </div>
                     </div>
                 </div>
-                <!--<div class="col-lg-4">
+                <div class="col-lg-4">
                     <div class="ticket-item">
                         <div class="thumb">
                             <img src="../../public/assets/images/ticket-04.jpg" alt="">
@@ -365,8 +371,8 @@ https://www.tooplate.com/view/2125-artxibition
                                 <p>São Conrado, Rio de Janeiro</p>
                             </div>
                             <div class="col-lg-6">
-                                <p class="copyright">Copyright 2021 ArtXibition Company 
-                    
+                                <p class="copyright">Copyright 2021 ArtXibition Company
+
                     			<br>Design: <a rel="nofollow" href="https://www.tooplate.com" target="_parent">Tooplate</a></p>
                             </div>
                         </div>
@@ -385,7 +391,7 @@ https://www.tooplate.com/view/2125-artxibition
                                         <li><a href="about.html.twig">About Us</a></li>
                                         <li><a href="rent-venue.html.twig">Rent Venue</a></li>
                                         <li><a href="../event/index.html.twig">Shows & Events</a></li>
-                                        <li><a href="tickets.html">Tickets</a></li> 
+                                        <li><a href="tickets.html">Tickets</a></li>
                                     </ul>
                                 </div>
                             </div>
