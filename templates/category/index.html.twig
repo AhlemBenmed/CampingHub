@@ -1,37 +1,265 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Category index{% endblock %}
+<head>
 
-{% block body %}
-    <h1>Category index</h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.description }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <title>ArtXibition Template - Shows and Events Page</title>
 
-    <a href="{{ path('app_category_new') }}">Create new</a>
-{% endblock %}
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl-carousel.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/tooplate-artxibition.css') }}">
+
+</head>
+
+<body>
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                <span>Hey! The Show Is Starting In 5 Days.</span>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="text-button">
+                    <a href="rent-venue.html.twig">Contact Us Now <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+
+                    <a href="oldindex.html.twig" class="logo">Camping<em>HUB</em></a>
+
+                    <ul class="nav">
+                        <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+                        <li><a href="{{ asset('about.html.twig') }}">About Us</a></li>
+                        <li><a href="{{ asset('rent-venue.html.twig') }}">Rent Venue</a></li>
+                        <li><a class="active">Events</a></li>
+                        <li><a href="{{ asset('center') }}" >Centers</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="page-heading-shows-events">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Categories</h2>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shows-events-tabs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row" id="tabs">
+                    <div class="col-lg-12">
+                        <div class="heading-tabs">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <ul></ul>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="main-dark-button">
+                                        <a href="{{ path('app_event_new') }}">Add Category</a>
+                                    </div>
+                                </div>
+                                {# <div class="col-lg-4">
+                                          <div class="main-dark-button">
+                                              <a href="ticket-details.html.twig">Purchase Tickets</a>
+                                          </div>
+                                    </div>#}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <section class='tabs-content'>
+                            <article id='tabs-1'>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                {% for category in categories %}
+                                                    <div class="event-item">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="left-content">
+                                                                    <h4>{{ category.name }}</h4>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6">
+                                                                <div class="right-content">
+                                                                    <div class="actions">
+                                                                        <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-primary">
+                                                                            <i class="fa fa-edit"></i> Edit
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Subscribe Our Newsletter:</h4>
+            </div>
+            <div class="col-lg-8">
+                <form id="subscribe" action="" method="get">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <fieldset>
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-3">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="sub-footer">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="logo"><span>Art<em>Xibition</em></span></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="oldindex.html.twig" class="active">Home</a></li>
+                                    <li><a href="about.html.twig">About Us</a></li>
+                                    <li><a href="rent-venue.html.twig">Rent Venue</a></li>
+                                    <li><a href="shows-events.html">Shows  Events</a></li>
+                                    <li><a href="tickets.html.twig">Tickets</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="social-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
+
+
+<script src="{{ asset('assets/js/popper.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+
+<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+<script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/imgfix.min.js') }}"></script>
+<script src="{{ asset('assets/js/mixitup.js') }}"></script>
+<script src="{{ asset('assets/js/accordions.js') }}"></script>
+<script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
+
+
+<script src="{{ asset('assets/js/custom.js') }}"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
