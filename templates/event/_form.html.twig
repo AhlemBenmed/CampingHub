@@ -1,4 +1,55 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div class="form-group">
+    {{ form_label(form.name, 'Event Name:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.name) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.description, 'Description:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.description) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.dateStart, 'Start Date:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dateStart, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateStart) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.dateEnd, 'End Date:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dateEnd, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateEnd) }}
+</div>
+
+
+<div class="form-group">
+    {{ form_label(form.maxParticipants, 'Maximum Participants:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.maxParticipants, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.maxParticipants) }}
+</div>
+
+
+<div class="form-group">
+    {{ form_label(form.category, 'Category:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.category) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.centers, 'Centers:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.centers, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.centers) }}
+</div>
+
+
+
+
+
+
+
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

@@ -32,6 +32,7 @@ class EventType extends AbstractType
                 'class' => Center::class,
                 'choice_label' => 'id',
                 'multiple' => true,
+
             ])
         ;
     }
