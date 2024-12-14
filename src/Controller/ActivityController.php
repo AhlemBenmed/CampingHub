@@ -17,7 +17,7 @@ final class ActivityController extends AbstractController
     #[Route(name: 'app_activity_index', methods: ['GET'])]
     public function index(ActivityRepository $activityRepository): Response
     {
-        return $this->render('activity/Oldindex.html.twig', [
+        return $this->render('activity/index.html.twig', [
             'activities' => $activityRepository->findAll(),
         ]);
     }

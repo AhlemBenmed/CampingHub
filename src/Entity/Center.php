@@ -51,6 +51,9 @@ class Center
     #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'center')]
     private Collection $services;
 
+    #[ORM\Column]
+    private ?float $price = null;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -215,6 +218,18 @@ class Center
                 $service->setCenter(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }

@@ -1,4 +1,42 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+                        {{ form_start(form) }}
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.name, 'Center Name:', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.name) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.description, 'Description:', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.location, 'Location:', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.location, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.location) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.capacity, 'Capacity:', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.capacity, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.capacity) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.phone, 'Phone:', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.phone) }}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            {{ form_label(form.email, 'Email:', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+                        {{ form_end(form) }}

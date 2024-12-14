@@ -20,11 +20,6 @@ class CenterType extends AbstractType
             ->add('phone')
             ->add('email')
             ->add('capacity')
-            ->add('events', EntityType::class, [
-                'class' => event::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-            ])
         ;
     }
 

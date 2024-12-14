@@ -1,46 +1,326 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Center{% endblock %}
+<head>
 
-{% block body %}
-    <h1>Center</h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ center.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ center.name }}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ center.location }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ center.description }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ center.phone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ center.email }}</td>
-            </tr>
-            <tr>
-                <th>Capacity</th>
-                <td>{{ center.capacity }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <title>ArtXibition Template - Rent a venue</title>
 
-    <a href="{{ path('app_center_index') }}">back to list</a>
 
-    <a href="{{ path('app_center_edit', {'id': center.id}) }}">edit</a>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
-    {{ include('center/_delete_form.html.twig') }}
-{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl-carousel.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/tooplate-artxibition.css') }}">
+    <!--
+
+  Tooplate 2125 ArtXibition
+
+  https://www.tooplate.com/view/2125-artxibition
+
+  -->
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Pre HEader ***** -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                <span>Hey! The Show Is Starting In 5 Days.</span>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="text-button">
+                    <a href="rent-venue.html">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+
+                    <a href="oldindex.html.twig" class="logo">Camping<em>HUB</em></a>
+
+                    <ul class="nav">
+                        <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+                        <li><a href="{{ asset('about.html.twig') }}">About Us</a></li>
+                        <li><a href="{{ asset('rent-venue.html.twig') }}">Rent Venue</a></li>
+                        <li><a class="active">Events</a></li>
+                        <li><a href="{{ asset('center') }}" >Centers</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** About Us Page ***** -->
+<div class="page-heading-rent-venue">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Are You Looking For A Venue?</h2>
+                <span>Check out our venues, pick your choice and fill the reservation Application.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rent-venue-tabs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row" id="tabs">
+                    <div class="col-lg-12">
+                        <div class="heading-tabs">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <ul>
+                                        <li><a href='#tabs-1' style="font-size: 15px; font-weight: bold; color: black;">{{ center.name }}</a></li>
+                                    </ul>
+
+                                </div>
+                                <div class="col-lg-4 d-flex align-items-center justify-content-between">
+                                    <a href="{{ path('App_center_index') }}" class="btn btn-secondary">
+                                        <i class="fa fa-arrow-left"></i> Back to list
+                                    </a>
+                                    <div class="main-dark-button">
+                                        <a href="{{ path('App_center_new') }}">ADD A Center</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <section class='tabs-content'>
+                            <article id='tabs-1'>
+                                <div class="row">
+                                    <!-- Event Details -->
+                                    <div class="col-lg-9">
+                                        <div class="buttons mt-3">
+
+                                            {#
+                                            <a href="{{ path('App_center_edit', {'id': center.id}) }}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+                                            {{ include('center/_delete_form.html.twig') }}
+                                            #}
+                                        </div>
+                                        <div class="right-content">
+                                            <h4>{{ center.name }}</h4>
+                                            <p>{{ center.description }}</p>
+                                            <ul class="list">
+                                                <li style="font-size: 14px; font-weight: bold; color: black;">
+                                                    <strong>location:</strong> {{ center.location}}
+                                                </li>
+                                                <li style="font-size: 14px; font-weight: bold; color: black;">
+                                                    <strong>phone:</strong> {{ center.phone}}
+                                                </li>
+                                                <li style="font-size: 14px; font-weight: bold; color: black;">
+                                                    <strong>capacity:</strong> {{ center.capacity }}
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <!-- Sidebar with Map -->
+                                    <div class="col-lg-3">
+                                        <div id="map">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14678.414668643849!2d-43.19038460753291!3d-22.96913839717705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bd54579a5956b%3A0xa102deeaffcb3e3!2sCopacabana%20Beach!5e1!3m2!1sen!2sth!4v1630941170951!5m2!1sen!2sth"
+                                                    width="100%"
+                                                    height="240px"
+                                                    frameborder="0"
+                                                    style="border:0"
+                                                    allowfullscreen=""
+                                                    loading="lazy">
+                                            </iframe>
+                                            <h5>Any Question?</h5>
+                                            <p>Tumeric air affogato sare torial waistcoat denim stumber.</p>
+                                            <div class="text-button">
+                                                <a href="ticket-details.html">Need Direction? <i class="fa fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- *** Subscribe *** -->
+<div class="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Subscribe Our Newsletter:</h4>
+            </div>
+            <div class="col-lg-8">
+                <form id="subscribe" action="" method="get">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <fieldset>
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-3">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- *** Footer *** -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="address">
+                    <h4>Sunny Hill Festival Address</h4>
+                    <span>5 College St NW, <br>Norcross, GA 30071<br>United States</span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Info</a></li>
+                        <li><a href="#">Venues</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">Videos</a></li>
+                        <li><a href="#">Outreach</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="hours">
+                    <h4>Open Hours</h4>
+                    <ul>
+                        <li>Mon to Fri: 10:00 AM to 8:00 PM</li>
+                        <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
+                        <li>Holidays: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="under-footer">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>São Conrado, Rio de Janeiro</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="copyright">Copyright 2021 ArtXibition Company
+
+                                <br>Design: <a rel="nofollow" href="https://www.tooplate.com" target="_parent">Tooplate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="sub-footer">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="logo"><span>Art<em>Xibition</em></span></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index.html" class="active">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="rent-venue.html">Rent Venue</a></li>
+                                    <li><a href="shows-centers.html">Shows & Events</a></li>
+                                    <li><a href="tickets.html">Tickets</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="social-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ asset('assets/js/popper.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+<!-- Plugins -->
+<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+<script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/imgfix.min.js') }}"></script>
+<script src="{{ asset('assets/js/mixitup.js') }}"></script>
+<script src="{{ asset('assets/js/accordions.js') }}"></script>
+<script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
+
+<!-- Global Init -->
+<script src="{{ asset('assets/js/custom.js') }}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
