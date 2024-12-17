@@ -1,4 +1,47 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div class="form-group">
+    {{ form_label(form.name, 'Activity Name:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.name) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.description, 'Description:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.description) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.timeStart, 'Start Time:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.timeStart, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.timeStart) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.timeEnd, 'End Time:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.timeEnd, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.timeEnd) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.dayOfWeek, 'Day of the Week:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dayOfWeek, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dayOfWeek) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.specificDate, 'Specific Date:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.specificDate, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.specificDate) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.center, 'Center:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.center, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.center) }}
+</div>
+
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

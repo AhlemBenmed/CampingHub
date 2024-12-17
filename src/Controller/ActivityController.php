@@ -42,13 +42,17 @@ final class ActivityController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_activity_show', methods: ['GET'])]
-    public function show(Activity $activity): Response
+    #[Route('/{center_id}', name: 'app_activity_show', methods: ['GET'])]
+    public function show(int $center_id, ActivityRepository $activityRepository): Response
     {
+        // Fetch activities associated with the center ID
+        $activities = $activityRepository->findByCenterId($center_id);
+
         return $this->render('activity/show.html.twig', [
-            'activity' => $activity,
+            'activities' => $activities,
         ]);
     }
+
 
     #[Route('/{id}/edit', name: 'app_activity_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Activity $activity, EntityManagerInterface $entityManager): Response

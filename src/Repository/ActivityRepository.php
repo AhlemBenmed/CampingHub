@@ -15,6 +15,14 @@ class ActivityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Activity::class);
     }
+    public function findByCenterId(int $centerId): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.center = :centerId')
+            ->setParameter('centerId', $centerId)
+            ->getQuery()
+            ->getResult();
+    }
 
     //    /**
     //     * @return Activity[] Returns an array of Activity objects
