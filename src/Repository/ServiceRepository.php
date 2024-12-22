@@ -15,7 +15,14 @@ class ServiceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Service::class);
     }
-
+    public function findByCenterId(int $centerId): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.center = :centerId')
+            ->setParameter('centerId', $centerId)
+            ->getQuery()
+            ->getResult();
+    }
     //    /**
     //     * @return Service[] Returns an array of Service objects
     //     */

@@ -1,11 +1,259 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-{% block title %}New Service{% endblock %}
+    <title>ArtXibition Template - Rent a venue</title>
 
-{% block body %}
-    <h1>Create new Service</h1>
 
-    {{ include('service/_form.html.twig') }}
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
-    <a href="{{ path('app_service_index') }}">back to list</a>
-{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl-carousel.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/tooplate-artxibition.css') }}">
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Pre HEader ***** -->
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                <span>Hey! The Show Is Starting In 5 Days.</span>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="text-button">
+                    <a href="rent-venue.html">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+
+                    <a href="oldindex.html.twig" class="logo">Camping<em>HUB</em></a>
+
+                    <ul class="nav">
+                        <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
+                        <li><a href="{{ asset('about.html.twig') }}">About Us</a></li>
+                        <li><a href="{{ asset('rent-venue.html.twig') }}">Rent Venue</a></li>
+                        <li><a class="active">Events</a></li>
+                        <li><a href="{{ asset('center') }}" >Centers</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** About Us Page ***** -->
+<div class="page-heading-rent-venue">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Are You Looking For A Venue?</h2>
+                <span>Check out our venues, pick your choice and fill the reservation application.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rent-venue-application">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h2 class="mb-0">Create new service</h2>
+                    <a href="{{ path('app_service_show', {'center_id': center_id}) }}" class="btn btn-secondary">
+                        <i class="fa fa-arrow-left"></i> Back to list
+                    </a>
+                </div>
+
+
+
+                {% block body %}
+                    {{ include('service/_form.html.twig') }}
+
+                {% endblock %}
+                {# <div class="contact-form">
+                    <form id="contact" action="" method="post">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="name" type="text" id="name" placeholder="Your Name*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="phone-number" type="text" id="phone-number" placeholder="Phone Number*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="company-organization" type="text" id="company-organization" placeholder="Company / Organization*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="venue-requested" type="text" id="venue-requested" placeholder="Venue Requested*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="type-service" type="text" id="type-service" placeholder="Type Of Event*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="date-requested-first" type="text" id="date-requested-first" placeholder="Date Requested (Primary Date)*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <fieldset>
+                                    <input name="date-requested-second" type="text" id="date-requested-second" placeholder="Date Requested (Secondary Date)*" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <textarea name="about-service-hosting" rows="6" id="about-service-hosting" placeholder="About The Event You Are Hosting" required=""></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-dark-button">Submit Request</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                #}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- *** Subscribe *** -->
+<div class="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Subscribe Our Newsletter:</h4>
+            </div>
+            <div class="col-lg-8">
+                <form id="subscribe" action="" method="get">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <fieldset>
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-3">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- *** Footer *** -->
+<footer>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <div class="sub-footer">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="logo"><span>Art<em>Xibition</em></span></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index.html" class="active">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="rent-venue.html">Rent Venue</a></li>
+                                    <li><a href="shows-services.html">Events</a></li>
+                                    <li><a href="tickets.html">Centers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="social-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ asset('assets/js/popper.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+<!-- Plugins -->
+<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>
+<script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/imgfix.min.js') }}"></script>
+<script src="{{ asset('assets/js/mixitup.js') }}"></script>
+<script src="{{ asset('assets/js/accordions.js') }}"></script>
+<script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
+
+<!-- Global Init -->
+<script src="{{ asset('assets/js/custom.js') }}"></script>
+
+</body>
+</html>

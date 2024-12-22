@@ -16,12 +16,7 @@ class ServiceType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('availability')
-            ->add('center', EntityType::class, [
-                'class' => Center::class,
-                'choice_label' => 'id',
-            ])
-        ;
+            ->add('availability');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -25,12 +25,7 @@ class ActivityType extends AbstractType
             ->add('dayOfWeek')
             ->add('specificDate', null, [
                 'widget' => 'single_text',
-            ])
-            ->add('center', EntityType::class, [
-                'class' => Center::class,
-                'choice_label' => 'id',
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

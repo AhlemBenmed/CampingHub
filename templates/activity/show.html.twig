@@ -2,48 +2,46 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Tooplate">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Activities for Center </title>
+    <title>ArtXibition Template - Shows and Events Page</title>
+
+
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl-carousel.css') }}">
+
     <link rel="stylesheet" href="{{ asset('assets/css/tooplate-artxibition.css') }}">
+
 </head>
-
 <body>
-<div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</div>
-
 <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="index.html.twig" class="logo">Camping<em>HUB</em></a>
+
+                    <a href="oldindex.html.twig" class="logo">Camping<em>HUB</em></a>
+
                     <ul class="nav">
                         <li><a href="{{ asset('index.html.twig') }}">Home</a></li>
                         <li><a href="{{ asset('about.html.twig') }}">About Us</a></li>
                         <li><a href="{{ asset('rent-venue.html.twig') }}">Rent Venue</a></li>
                         <li><a class="active">Events</a></li>
-                        <li><a href="{{ asset('center') }}">Centers</a></li>
+                        <li><a href="{{ asset('center') }}" >Centers</a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
+
                 </nav>
             </div>
         </div>
@@ -54,53 +52,77 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Activities for Center </h2>
+                <h2>Activities</h2>
+
             </div>
         </div>
     </div>
 </div>
-
+<!-- ***** Header Area End ***** -->
+<!-- *** Venues & Tickets ***-->
 <div class="venue-tickets">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-tabs" style="text-align: right; margin-top: 20px;margin-right: 20px;">
+                    <div class="row" style="justify-content: right; display: flex;">
+                        <div class="main-dark-button" style="display: inline-block;">
+                            <a href="{{ path('app_activity_new' , {'center_id': center_id}) }}">ADD A Activity</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% for activity in activities %}
                 <div class="col-lg-4">
                     <div class="venue-item">
                         <div class="down-content">
-                            <h4>{{ activity.name }}</h4>
-                            <p>{{ activity.description }}</p>
-                            <ul>
-                                <li>When:
-                                    {% if activity.specificDate is not null %}
-                                        {{ activity.specificDate|date('Y-m-d') }}
-                                    {% elseif activity.dayOfWeek is not null %}
-                                        {{ activity.dayOfWeek }}
-                                    {% else %}
-                                        No valid date available
-                                    {% endif %}
-                                </li>
-                            </ul>
-                            <div class="price">
-                                <span>From <em>{{ activity.timeStart|date('g:i A') }}</em></span><br>
-                                <span>To <em>{{ activity.timeEnd|date('g:i A') }}</em></span>
+                            <div class="left-content">
+                                <div class="main-white-button">
+                                    <a href="ticket-details.html">Center Name</a>
+                                </div>
+                            </div>
+                            <div class="right-content">
+                                <h4>{{ activity.name }}</h4>
+                                <p>{{ activity.description }}</p>
+                                <ul>
+                                    <li><i class="fa fa-arrow-right"></i>When: {% if activity.getSpecificDate() is not null %}
+                                            {{ activity.getSpecificDate()|date('Y-m-d') }}  {# Displays the full day of the week for specificDate #}
+                                        {% elseif activity.getDayOfWeek() is not null %}
+                                            {{ activity.getDayOfWeek() }}  {# Displays the day of the week stored in dayOfWeek #}
+                                        {% else %}
+                                            {{ "No valid date available" }}
+                                        {% endif %}</li>
+                                </ul>
+                                <div class="price">
+                                    <span>From <em>{{ activity.getTimeStart()|date('g:i A') }} </em></span><br>
+                                    <span>To <em>{{ activity.getTimeEnd()|date('g:i A') }}</em></span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <center><div class="main-dark-button" >
+                            <a href="{{ path('app_activity_edit', {'id': activity.id ,'center_id': center_id}) }}" class="btn btn-primary">
+                                <i class="fa fa-edit"></i>Edit</a>
+                        </div>
+                    </center>
                 </div>
+
             {% else %}
-                <p>No activities found for this center.</p>
+                <div class="col-lg-12">
+                    <p>No activities found.</p>
+                </div>
             {% endfor %}
         </div>
     </div>
 </div>
 
-
+<!-- *** Footer *** -->
 <footer>
     <div class="col-lg-12">
         <div class="sub-footer">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="logo"><span>Camping<em>HUB</em></span></div>
+                    <div class="logo"><span>Art<em>Xibition</em></span></div>
                 </div>
                 <div class="col-lg-6">
                     <div class="menu">
@@ -126,6 +148,28 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
 </footer>
+
+<!-- jQuery -->
+<script src="assets/js/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/imgfix.min.js"></script>
+<script src="assets/js/mixitup.js"></script>
+<script src="assets/js/accordions.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+
+<!-- Global Init -->
+<script src="assets/js/custom.js"></script>
+
 </body>
 </html>

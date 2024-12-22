@@ -36,11 +36,6 @@
     {{ form_errors(form.specificDate) }}
 </div>
 
-<div class="form-group">
-    {{ form_label(form.center, 'Center:', {'label_attr': {'class': 'form-label'}}) }}
-    {{ form_widget(form.center, {'attr': {'class': 'form-control'}}) }}
-    {{ form_errors(form.center) }}
-</div>
 
 <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 

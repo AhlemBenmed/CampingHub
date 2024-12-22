@@ -211,7 +211,7 @@
                 {% block body %}
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <h4 class="mb-0">Edit Center</h4>
-                        <a href="{{ path('App_center_index') }}" class="btn btn-secondary">
+                        <a href="{{ path('App_center_show', {'id': center_id})  }}" class="btn btn-secondary">
                             <i class="fa fa-arrow-left"></i> Back to list
                         </a>
                     </div>

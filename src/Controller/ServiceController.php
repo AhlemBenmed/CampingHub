@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Entity\Center;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,36 +23,46 @@ final class ServiceController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_service_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/center/{center_id}/new', name: 'app_service_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, int $center_id, EntityManagerInterface $entityManager): Response
     {
         $service = new Service();
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $center = $entityManager->getRepository(Center::class)->find($center_id);
+            if (!$center) {
+                throw $this->createNotFoundException('Center not found.');
+            }
+
+            $service->setCenter($center);
             $entityManager->persist($service);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_service_show', ['center_id' => $center_id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('service/new.html.twig', [
             'service' => $service,
             'form' => $form,
+            'center_id' => $center_id,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_service_show', methods: ['GET'])]
-    public function show(Service $service): Response
+    #[Route('/center/{center_id}/show', name: 'app_service_show', methods: ['GET'])]
+    public function show(int $center_id, ServiceRepository $serviceRepository): Response
     {
+        $services = $serviceRepository->findBy(['center' => $center_id]);
+
         return $this->render('service/show.html.twig', [
-            'service' => $service,
+            'services' => $services,
+            'center_id' => $center_id,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_service_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Service $service, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/edit/center/{center_id}', name: 'app_service_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Service $service, int $center_id, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);
@@ -59,23 +70,24 @@ final class ServiceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_service_show', ['center_id' => $center_id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('service/edit.html.twig', [
             'service' => $service,
             'form' => $form,
+            'center_id' => $center_id,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_service_delete', methods: ['POST'])]
-    public function delete(Request $request, Service $service, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/delete/center/{center_id}', name: 'app_service_delete', methods: ['POST'])]
+    public function delete(Request $request, Service $service, int $center_id, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $service->getId(), $request->get('_token'))) {
             $entityManager->remove($service);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_service_show', ['center_id' => $center_id], Response::HTTP_SEE_OTHER);
     }
 }
