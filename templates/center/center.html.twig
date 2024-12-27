@@ -105,48 +105,57 @@ https://www.tooplate.com/view/2125-artxibition
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="search-box">
-                        <form id="subscribe" action="" method="get">
+                    <div class="search-box" style="padding-top: 10px;">
+                        <form id="subscribe" action="{{ path('App_center_filter') }}" method="GET">
                             <div class="row">
-                                <div class="col-lg-5">
+                                <div class="col-lg-3">
                                     <div class="search-heading">
-                                        <h4>Sort The Upcoming Shows & Events By:</h4>
+                                        <h4>Sort The Centers By:</h4>
                                     </div>
                                 </div>
-                                <div class="col-lg-7">
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <select value="month">
-                                                <option value="month">Month</option>
-                                                <option name="June" id="June">June</option>
-                                                <option name="July" id="July">July</option>
-                                                <option name="August" id="August">August</option>
-                                                <option name="September" id="September">September</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <select value="location">
-                                                <option value="location">Location</option>
-                                                <option name="Brazil" id="Brazil">Brazil</option>
-                                                <option name="Europe" id="Europe">Europe</option>
-                                                <option name="US" id="US">US</option>
-                                                <option name="Asia" id="Asia">Asia</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <select value="month">
-                                                <option value="month">Price</option>
-                                                <option name="min" id="min">$0 - $50</option>
-                                                <option name="standard" id="standard">$50 - $100</option>
-                                                <option name="hight" id="hight">$100 - $200</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <fieldset>
-                                            <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
-                                            </fieldset>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <select id="governorate" name="governorate">
+                                        <option value="">Select Governorate</option>
+                                        <option value="Tunis">Tunis</option>
+                                        <option value="Ariana">Ariana</option>
+                                        <option value="BenArous">Ben Arous</option>
+                                        <option value="Manouba">Manouba</option>
+                                        <option value="Nabeul">Nabeul</option>
+                                        <option value="Zaghouan">Zaghouan</option>
+                                        <option value="Bizerte">Bizerte</option>
+                                        <option value="Beja">Beja</option>
+                                        <option value="Jendouba">Jendouba</option>
+                                        <option value="Kef">Kef</option>
+                                        <option value="Siliana">Siliana</option>
+                                        <option value="Sousse">Sousse</option>
+                                        <option value="Monastir">Monastir</option>
+                                        <option value="Mahdia">Mahdia</option>
+                                        <option value="Sfax">Sfax</option>
+                                        <option value="Kairouan">Kairouan</option>
+                                        <option value="Kasserine">Kasserine</option>
+                                        <option value="SidiBouzid">Sidi Bouzid</option>
+                                        <option value="Gabes">Gabes</option>
+                                        <option value="Medenine">Medenine</option>
+                                        <option value="Tataouine">Tataouine</option>
+                                        <option value="Gafsa">Gafsa</option>
+                                        <option value="Tozeur">Tozeur</option>
+                                        <option value="Kebili">Kebili</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <select id="city" name="city">
+                                        <option value="">Select City</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" name="center-name" id="center-name" placeholder="Enter center name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button" style="width: 100%; padding: 10px; border: 1px; border-radius: 5px; font-size: 14px;">Submit</button>
+                                    </fieldset>
                                 </div>
                             </div>
                         </form>
@@ -160,9 +169,9 @@ https://www.tooplate.com/view/2125-artxibition
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="height: 100px;">
                     <div class="heading">
-                        <h2>Centers Page</h2>
+                        <h2 style="margin-bottom: 20px;margin-top:20px;">Centers Page</h2>
                     </div>
                 </div>
                 {% for center in centers %}
@@ -196,112 +205,6 @@ https://www.tooplate.com/view/2125-artxibition
                     </div>
                 {% endfor %}
             </div>
-                <!--<div class="col-lg-4">
-                    <div class="ticket-item">
-                        <div class="thumb">
-                            <img src="{{ asset('assets/images/ticket-01.jpg') }}" alt="">
-                            <div class="price">
-                                <span>1 ticket<br>from <em>$45</em></span>
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <span>There Are 200 Tickets Left For This Show</span>
-                            <h4>Golden Festival</h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Sunday: 06:00 PM to 09:00 PM</li>
-                                <li><i class="fa fa-map-marker"></i>789 Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                            <div class="main-dark-button">
-                                <a href="ticket-details.html.twig">See more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ticket-item">
-                        <div class="thumb">
-                            <img src="{{ asset('assets/images/ticket-01.jpg') }}" alt="">
-
-                            <div class="price">
-                                <span>1 ticket<br>from <em>$65</em></span>
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <span>There Are 260 Tickets Left For This Show</span>
-                            <h4>Water Splash Festival</h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Tuesday: 07:00 PM to 11:00 PM</li>
-                                <li><i class="fa fa-map-marker"></i>456 Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                            <div class="main-dark-button">
-                                <a href="ticket-details.html.twig">See more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ticket-item">
-                        <div class="thumb">
-                            <img src="../../public/assets/images/ticket-04.jpg" alt="">
-                            <div class="price">
-                                <span>1 ticket<br>from <em>$20</em></span>
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <span>There Are 340 Tickets Left For This Show</span>
-                            <h4>Tiger Festival</h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Thursday: 06:40 PM to 11:40 PM</li>
-                                <li><i class="fa fa-map-marker"></i>123 Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                            <div class="main-dark-button">
-                                <a href="ticket-details.html.twig">See more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ticket-item">
-                        <div class="thumb">
-                            <img src="../../public/assets/images/ticket-05.jpg" alt="">
-                            <div class="price">
-                                <span>1 ticket<br>from <em>$30</em></span>
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <span>There Are 420 Tickets Left For This Show</span>
-                            <h4>Woodland Festival</h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Wednesday: 06:00 PM to 09:00 PM</li>
-                                <li><i class="fa fa-map-marker"></i>1122 Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                            <div class="main-dark-button">
-                                <a href="ticket-details.html.twig">Purchase Tickets</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ticket-item">
-                        <div class="thumb">
-                            <img src="../../public/assets/images/ticket-06.jpg" alt="">
-                            <div class="price">
-                                <span>1 ticket<br>from <em>$40</em></span>
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <span>There Are 520 Tickets Left For This Show</span>
-                            <h4>Winter Festival</h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> Saturday: 06:00 PM to 09:00 PM</li>
-                                <li><i class="fa fa-map-marker"></i>220 Copacabana Beach, Rio de Janeiro</li>
-                            </ul>
-                            <div class="main-dark-button">
-                                <a href="ticket-details.html.twig">Purchase Tickets</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
                 <div class="col-lg-12">
                     <div class="pagination">
                         <ul>
@@ -426,6 +329,51 @@ https://www.tooplate.com/view/2125-artxibition
     </footer>
 
     <!-- jQuery -->
+    <script>
+        const citiesByGovernorate = {
+            Tunis: ["Bab El Bhar", "Carthage", "El Menzah", "El Omrane", "El Kabaria", "La Marsa"],
+            Ariana: ["Raoued", "Sidi Thabet", "Ettadhamen", "Ariana Ville", "Mnihla"],
+            BenArous: ["Hammam Lif", "Rades", "Mornag", "Megrine", "Ezzahra", "Boumhel Bassatine"],
+            Manouba: ["Douar Hicher", "Oued Ellil", "Mornaguia", "El Battan", "Tebourba"],
+            Nabeul: ["Hammamet", "Korba", "Dar Chaabane", "Kelibia", "Menzel Temime"],
+            Zaghouan: ["Zaghouan", "Zriba", "Bir Mcherga", "El Fahs", "Nadhour"],
+            Bizerte: ["Bizerte Nord", "Bizerte Sud", "Menzel Bourguiba", "Ras Jebel", "Sejnane"],
+            Beja: ["Beja Nord", "Beja Sud", "Testour", "Teboursouk"],
+            Jendouba: ["Jendouba Ville", "Boussalem", "Tabarka", "Ain Draham"],
+            Kef: ["Kef Ville", "Nebeur", "Tajerouine"],
+            Siliana: ["Siliana Nord", "Makthar", "Bouarada"],
+            Sousse: ["Sousse Ville", "Akouda", "Hammam Sousse"],
+            Monastir: ["Monastir Ville", "Ksar Hellal", "Sahline"],
+            Mahdia: ["Mahdia Ville", "Ksour Essef", "Chebba"],
+            Sfax: ["Sfax Ville", "El Ain", "Thyna"],
+            Kairouan: ["Kairouan Ville", "Hajeb El Ayoun", "Chebika"],
+            Kasserine: ["Kasserine Ville", "Thala", "Sbiba"],
+            SidiBouzid: ["Sidi Bouzid Ville", "Jilma", "Meknassy"],
+            Gabes: ["Gabes Ville", "Matmata", "Mareth"],
+            Medenine: ["Medenine Ville", "Houmt Souk", "Zarzis"],
+            Tataouine: ["Tataouine Ville", "Bir Lahmar", "Smar"],
+            Gafsa: ["Gafsa Ville", "El Guettar", "Mdhilla"],
+            Tozeur: ["Tozeur Ville", "Degache", "Nefta"],
+            Kebili: ["Kebili Ville", "Douz", "El Faouar"]
+        };
+
+        const governorateSelect = document.getElementById("governorate");
+        const citySelect = document.getElementById("city");
+
+        governorateSelect.addEventListener("change", function () {
+            const selectedGovernorate = this.value;
+            citySelect.innerHTML = '<option value="">Select City</option>'; // Reset city dropdown
+
+            if (citiesByGovernorate[selectedGovernorate]) {
+                citiesByGovernorate[selectedGovernorate].forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        });
+    </script>
     <script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
 
     <!-- Bootstrap -->

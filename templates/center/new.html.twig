@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl-carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/tooplate-artxibition.css') }}">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
 <body>
@@ -78,32 +80,6 @@
     </div>
 </div>
 
-<div class="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <h4>Subscribe Our Newsletter:</h4>
-            </div>
-            <div class="col-lg-8">
-                <form id="subscribe" action="" method="get">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <fieldset>
-                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
-                            </fieldset>
-                        </div>
-                        <div class="col-lg-3">
-                            <fieldset>
-                                <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
-                            </fieldset>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <footer>
     <div class="container">
         <div class="row">
@@ -152,5 +128,7 @@
 <script src="{{ asset('assets/js/accordions.js') }}"></script>
 <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </body>
 </html>

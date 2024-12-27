@@ -15,7 +15,27 @@ class CenterRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Center::class);
     }
+    public function findByFilters($governorate = null, $city = null, $name = null)
+    {
+        $qb = $this->createQueryBuilder('c');
 
+        if ($governorate) {
+            $qb->orWhere('c.location LIKE :governorate')
+                ->setParameter('governorate', '%'.$governorate.'%');
+        }
+
+        if ($city) {
+            $qb->orWhere('c.location LIKE :city')
+                ->setParameter('city', '%'.$city.'%');
+        }
+
+        if ($name) {
+            $qb->orWhere('c.name LIKE :name')
+                ->setParameter('name', '%' . $name . '%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
     //    /**
     //     * @return Center[] Returns an array of Center objects
     //     */

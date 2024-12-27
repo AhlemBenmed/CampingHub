@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CenterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CenterRepository::class)]
@@ -51,8 +52,12 @@ class Center
     #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'center')]
     private Collection $services;
 
-    #[ORM\Column]
-    private ?float $price = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 8, nullable: true)]
+    private ?string $latitude = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 8, nullable: true)]
+    private ?string $longitude = null;
 
     public function __construct()
     {
@@ -222,14 +227,28 @@ class Center
         return $this;
     }
 
-    public function getPrice(): ?float
+
+
+    public function getLatitude(): ?string
     {
-        return $this->price;
+        return $this->latitude;
     }
 
-    public function setPrice(float $price): static
+    public function setLatitude(?string $latitude): static
     {
-        $this->price = $price;
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?string $longitude): static
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }

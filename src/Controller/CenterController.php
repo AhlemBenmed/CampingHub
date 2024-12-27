@@ -19,9 +19,30 @@ final class CenterController extends AbstractController
     {
         return $this->render('center/center.html.twig', [
             'centers' => $centerRepository->findAll(),
+            'governorate' => "",
+            'city' => "",
+            'name' => "",
         ]);
     }
+    #[Route('/filter', name: 'App_center_filter', methods: ['GET'])]
+    public function filter(CenterRepository $centerRepository, Request $request): Response
+    {
+        // Get filter parameters from query string
+        $governorate = $request->query->get('governorate');
+        $city = $request->query->get('city');
+        $name = $request->query->get('center-name');
 
+        // Find filtered centers using the repository method
+        $centers = $centerRepository->findByFilters($governorate, $city, $name);
+
+        // Pass the filtered data to the template
+        return $this->render('center/center.html.twig', [
+            'centers' => $centers,
+            'governorate' => $governorate,
+            'city' => $city,
+            'name' => $name,
+        ]);
+    }
     #[Route('/new', name: 'App_center_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

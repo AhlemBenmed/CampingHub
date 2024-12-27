@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl-carousel.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/tooplate-artxibition.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 </head>
 
@@ -211,7 +212,7 @@
                 {% block body %}
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <h4 class="mb-0">Edit Center</h4>
-                        <a href="{{ path('App_center_show', {'id': center_id})  }}" class="btn btn-secondary">
+                        <a href="{{ path('App_center_show', {'id': center.id,})  }}" class="btn btn-secondary">
                             <i class="fa fa-arrow-left"></i> Back to list
                         </a>
                     </div>
@@ -408,6 +409,7 @@
 
 <!-- Global Init -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 </body>
 </html>

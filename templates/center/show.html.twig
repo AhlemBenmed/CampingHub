@@ -27,6 +27,89 @@
   https://www.tooplate.com/view/2125-artxibition
 
   -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        #map {
+            width: 150%;
+            height: 240px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        #map [allowfullscreen] {
+                /* Optional styles for fullscreen enabled if needed */
+                display: block;
+            }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #f8f9fa; /* Light grey background */
+            border: 1px solid #dee2e6; /* Border for the card */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Slightly larger shadow */
+        }
+
+        .card-header {
+            position: relative;
+            height: 200px; /* Adjust height for better image visibility */
+            overflow: hidden;
+        }
+
+        .card-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures the whole image is visible */
+            background-color: #f0f0f0; /* Optional: background for empty space */
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-body p {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6c757d; /* Muted text */
+        }
+
+        .card-footer a {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-footer a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .card-footer i {
+            margin-left: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
@@ -128,13 +211,6 @@
                                     <!-- Event Details -->
                                     <div class="col-lg-9">
                                         <div class="buttons mt-3">
-
-                                            {#
-                                            <a href="{{ path('App_center_edit', {'id': center.id}) }}" class="btn btn-primary">
-                                                <i class="fa fa-edit"></i> Edit
-                                            </a>
-                                            {{ include('center/_delete_form.html.twig') }}
-                                            #}
                                         </div>
                                         <div class="right-content">
                                             <p>{{ center.description }}</p>
@@ -150,31 +226,49 @@
                                                 </li>
                                             </ul>
                                             <br>
-                                            <div class="text-button">
-                                                <a  href="{{ path('app_activity_show',{'center_id': center.id}) }}"><strong> the Center activities </strong><i class="fa fa-arrow-right"></i></a>
+                                            <div class="card-container">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <img src="{{ asset('assets/images/activities.png') }}" alt="Center Activities">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h3>Center Activities</h3>
+                                                    </div>
+                                                    <div class="card-footer" style="text-align: center;">
+                                                        <a href="{{ path('app_activity_show', {'center_id': center.id}) }}">
+                                                            Explore Activities
+                                                            <i class="fa fa-arrow-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <img src="{{ asset('assets/images/services.png') }}" alt="Center Services">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h3>Center Services</h3>
+                                                    </div>
+                                                    <div class="card-footer" style="text-align: center;">
+                                                        <a href="{{ path('app_service_show', {'center_id': center.id}) }}">
+                                                            Explore Services
+                                                            <i class="fa fa-arrow-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="text-button">
-                                                <a  href="{{ path('app_service_show',{'center_id': center.id}) }}"><strong> the Center services  </strong><i class="fa fa-arrow-right"></i></a>
-                                            </div>
+                                            <br>
                                         </div>
                                     </div>
                                     <!-- Sidebar with Map -->
                                     <div class="col-lg-3">
-                                        <div id="map">
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14678.414668643849!2d-43.19038460753291!3d-22.96913839717705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bd54579a5956b%3A0xa102deeaffcb3e3!2sCopacabana%20Beach!5e1!3m2!1sen!2sth!4v1630941170951!5m2!1sen!2sth"
-                                                    width="100%"
-                                                    height="240px"
-                                                    frameborder="0"
-                                                    style="border:0"
-                                                    allowfullscreen=""
-                                                    loading="lazy">
-                                            </iframe>
-                                            <h5>Any Question?</h5>
-                                            <p>Tumeric air affogato sare torial waistcoat denim stumber.</p>
+                                        <div id="map"></div>
+                                            <h5>Location</h5>
+                                            <p>{{ center.location }}</p>
 
                                         </div>
                                     </div>
-                                </div>
+
                             </article>
 
 
@@ -295,7 +389,25 @@
         </div>
     </div>
 </footer>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<script>
+    // Initialize the map
+    const map = L.map('map').setView([parseFloat('{{ center.latitude }}'), parseFloat('{{ center.longitude }}')], 6);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add a marker for the center
+    L.marker([parseFloat('{{ center.latitude }}'), parseFloat('{{ center.longitude }}')])
+        .addTo(map)
+        .bindPopup("<b>{{ center.name }}</b><br>{{ center.location }}")
+        .openPopup();
+</script>
 <!-- jQuery -->
 <script src="{{ asset('assets/js/jquery-2.1.0.min.js') }}"></script>
 

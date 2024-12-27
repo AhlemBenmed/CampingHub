@@ -20,6 +20,8 @@ class CenterType extends AbstractType
             ->add('phone')
             ->add('email')
             ->add('capacity')
+            ->add('latitude')
+            ->add('longitude')
         ;
     }
 
